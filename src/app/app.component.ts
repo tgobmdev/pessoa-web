@@ -23,9 +23,11 @@ export interface MenuItem {
 })
 export class AppComponent {
     isCollapsed = false
-    footerMessage = 'Ant Design ©2020 Implement By Angular'
+
     menuItems: MenuItem[] = [
         { iconType: 'user', label: 'Persons' },
-        { iconType: 'user', label: 'Adresses' },
+        { iconType: 'book', label: 'Adresses' },
     ]
+
+    footerMessage = 'Ant Design ©2020 Implement By Angular'
 }
