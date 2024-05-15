@@ -1,10 +1,13 @@
-import { Component } from '@angular/core'
 import { CommonModule } from '@angular/common'
+import { Component } from '@angular/core'
 import { RouterOutlet } from '@angular/router'
 import { NzIconModule } from 'ng-zorro-antd/icon'
 import { NzLayoutModule } from 'ng-zorro-antd/layout'
 import { NzMenuModule } from 'ng-zorro-antd/menu'
-
+export interface MenuItem {
+    iconType: string
+    label: string
+}
 @Component({
     selector: 'app-root',
     standalone: true,
@@ -20,4 +23,9 @@ import { NzMenuModule } from 'ng-zorro-antd/menu'
 })
 export class AppComponent {
     isCollapsed = false
+    footerMessage = 'Ant Design ©2020 Implement By Angular'
+    menuItems: MenuItem[] = [
+        { iconType: 'user', label: 'Persons' },
+        { iconType: 'user', label: 'Adresses' },
+    ]
 }
