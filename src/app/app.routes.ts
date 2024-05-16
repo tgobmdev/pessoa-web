@@ -1,12 +1,14 @@
 import { Routes } from '@angular/router'
+import { AddressComponent } from './pages/address/address.component'
+import { PersonComponent } from './pages/person/person.component'
 
 export const routes: Routes = [
-    { path: '', pathMatch: 'full', redirectTo: '/welcome' },
     {
-        path: 'welcome',
-        loadChildren: () =>
-            import('./pages/welcome/welcome.routes').then(
-                (m) => m.WELCOME_ROUTES
-            ),
+        path: 'address',
+        component: AddressComponent,
+    },
+    {
+        path: 'person',
+        component: PersonComponent,
     },
 ]

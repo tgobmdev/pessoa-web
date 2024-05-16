@@ -9,9 +9,11 @@
     >
         <div class="sidebar-logo"></div>
         <ul nz-menu nzTheme="dark" nzMode="inline">
-            <li *ngFor="let item of menuItems" nz-menu-item>
-                <span nz-icon [nzType]="item.iconType"></span>
-                <span>{{ item.label }}</span>
+            <li nz-menu-item *ngFor="let item of menuItems">
+                <a [routerLink]="item.routerLink">
+                    <span nz-icon [nzType]="item.iconType"></span>
+                    <span>{{ item.label }}</span>
+                </a>
             </li>
         </ul>
     </nz-sider>
