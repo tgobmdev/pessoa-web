@@ -1,14 +1,16 @@
 import { CommonModule } from '@angular/common'
 import { Component } from '@angular/core'
-import { Router, RouterLink, RouterOutlet } from '@angular/router'
+import { RouterLink, RouterOutlet } from '@angular/router'
 import { NzIconModule } from 'ng-zorro-antd/icon'
 import { NzLayoutModule } from 'ng-zorro-antd/layout'
 import { NzMenuModule } from 'ng-zorro-antd/menu'
+
 export interface MenuItem {
     iconType: string
     label: string
     routerLink: string
 }
+
 @Component({
     selector: 'app-root',
     standalone: true,

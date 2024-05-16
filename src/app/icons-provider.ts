@@ -1,9 +1,9 @@
 import { EnvironmentProviders, importProvidersFrom } from '@angular/core'
 import {
+    DashboardOutline,
+    FormOutline,
     MenuFoldOutline,
     MenuUnfoldOutline,
-    FormOutline,
-    DashboardOutline,
 } from '@ant-design/icons-angular/icons'
 import { NzIconModule } from 'ng-zorro-antd/icon'
 
