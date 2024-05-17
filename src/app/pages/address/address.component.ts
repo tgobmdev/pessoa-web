@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message'
 import { Column } from '../../shared/table/models/column.interface'
 import { TableModule } from '../../shared/table/table.module'
 import { AddressService } from './address.service'
@@ -7,7 +8,7 @@ import { AddressDetailsResponse } from './response/address-details-response.inte
 @Component({
     selector: 'app-address',
     standalone: true,
-    imports: [TableModule],
+    imports: [TableModule, NzMessageModule],
     templateUrl: './address.component.html',
     styleUrl: './address.component.css',
 })
@@ -23,7 +24,10 @@ export class AddressComponent implements OnInit {
         { field: 'stateShortname', header: 'State Shortname' },
     ]
 
-    constructor(private readonly addressService: AddressService) {}
+    constructor(
+        private readonly addressService: AddressService,
+        private readonly message: NzMessageService
+    ) {}
 
     ngOnInit(): void {
         this.getAllAddresses()
@@ -35,7 +39,7 @@ export class AddressComponent implements OnInit {
                 this.dataSet = res
             },
             error: (err) => {
-                console.log(err)
+                this.message.error(err)
             },
         })
     }
