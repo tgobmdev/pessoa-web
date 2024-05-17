@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core'
-import { Column } from './models/column.interface'
+import { Column } from './models/table-common-models.interface'
 
 @Component({
     selector: 'app-table',

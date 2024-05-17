@@ -6,7 +6,27 @@
     </thead>
     <tbody>
         <tr *ngFor="let data of table.data">
-            <td *ngFor="let col of columns">{{ data[col.field] }}</td>
+            <td *ngFor="let col of columns">
+                <ng-container *ngIf="col.type === 'data'">
+                    {{ data[col.field] }}
+                </ng-container>
+
+                <ng-container *ngIf="col.type === 'action'">
+                    <ng-container *ngFor="let action of col.actions">
+                        <a
+                            nz-tooltip
+                            [nzTooltipTitle]="action.tooltipTitle"
+                            nzTooltipPlacement="top"
+                            ><span
+                                nz-icon
+                                [nzType]="action.icon"
+                                nzTheme="outline"
+                            ></span
+                        ></a>
+                        <nz-divider nzType="vertical"></nz-divider>
+                    </ng-container>
+                </ng-container>
+            </td>
         </tr>
     </tbody>
 </nz-table>
