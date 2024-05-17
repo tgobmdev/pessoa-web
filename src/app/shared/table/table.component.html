@@ -1,0 +1,12 @@
+<nz-table #table [nzData]="dataSet">
+    <thead>
+        <tr>
+            <th *ngFor="let col of columns">{{ col.header }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let data of table.data">
+            <td *ngFor="let col of columns">{{ data[col.field] }}</td>
+        </tr>
+    </tbody>
+</nz-table>
