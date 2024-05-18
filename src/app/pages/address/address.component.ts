@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core'
+import { Router } from '@angular/router'
 import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message'
 import { Column } from '../../shared/table/models/table-common-models.interface'
 import { TableModule } from '../../shared/table/table.module'
@@ -38,8 +39,9 @@ export class AddressComponent implements OnInit {
     ]
 
     constructor(
-        private readonly addressService: AddressService,
-        private readonly message: NzMessageService
+        private readonly router: Router,
+        private readonly message: NzMessageService,
+        private readonly addressService: AddressService
     ) {}
 
     ngOnInit(): void {
@@ -57,5 +59,7 @@ export class AddressComponent implements OnInit {
         })
     }
 
-    viewAddress = (address: number) => {}
+    viewAddress = (id: number) => {
+        this.router.navigate([`address/${id}`])
+    }
 }
