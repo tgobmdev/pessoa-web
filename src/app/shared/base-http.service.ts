@@ -8,7 +8,7 @@ import { Observable } from 'rxjs'
 export class BaseHttpService {
     protected baseUrl: string = ''
 
-    constructor(protected readonly httpClient: HttpClient) {}
+    constructor(private readonly httpClient: HttpClient) {}
 
     protected getUrl = (endpoint: string): string => {
         return `${this.baseUrl}/${endpoint}`

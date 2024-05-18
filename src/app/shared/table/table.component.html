@@ -17,6 +17,7 @@
                             nz-tooltip
                             [nzTooltipTitle]="action.tooltipTitle"
                             nzTooltipPlacement="top"
+                            (click)="action.actionFunction(data)"
                             ><span
                                 nz-icon
                                 [nzType]="action.icon"

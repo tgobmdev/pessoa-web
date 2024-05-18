@@ -3,14 +3,14 @@ export interface DataColumn {
     header: string
     field: string
 }
-export interface Action {
+export interface Action<T> {
     tooltipTitle: string
     icon: string
-    handler: () => void
+    actionFunction: (data: T) => void
 }
-export interface ActionColumn {
+export interface ActionColumn<T> {
     type: 'action'
     header: string
-    actions: Action[]
+    actions: Action<T>[]
 }
-export type Column = DataColumn | ActionColumn
+export type Column = DataColumn | ActionColumn<any>

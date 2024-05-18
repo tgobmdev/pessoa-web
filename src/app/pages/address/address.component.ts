@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message'
-import { Column } from '../../shared/table/models/column.interface'
+import { Column } from '../../shared/table/models/table-common-models.interface'
 import { TableModule } from '../../shared/table/table.module'
 import { AddressService } from './address.service'
 import { AddressDetailsResponse } from './response/address-details-response.interface'
@@ -14,14 +14,27 @@ import { AddressDetailsResponse } from './response/address-details-response.inte
 })
 export class AddressComponent implements OnInit {
     dataSet: AddressDetailsResponse[] = []
+
     columns: Column[] = [
-        { field: 'id', header: 'ID' },
-        { field: 'street', header: 'Street' },
-        { field: 'zipcode', header: 'ZipCode' },
-        { field: 'streetNumber', header: 'Street Number' },
-        { field: 'city', header: 'City' },
-        { field: 'state', header: 'State' },
-        { field: 'stateShortname', header: 'State Shortname' },
+        { type: 'data', field: 'id', header: 'ID' },
+        { type: 'data', field: 'street', header: 'Street' },
+        { type: 'data', field: 'zipcode', header: 'ZipCode' },
+        { type: 'data', field: 'streetNumber', header: 'Street Number' },
+        { type: 'data', field: 'city', header: 'City' },
+        { type: 'data', field: 'state', header: 'State' },
+        { type: 'data', field: 'stateShortname', header: 'State Shortname' },
+        {
+            type: 'action',
+            header: 'Action',
+            actions: [
+                {
+                    tooltipTitle: 'View',
+                    icon: 'eye',
+                    actionFunction: (address: AddressDetailsResponse) =>
+                        this.viewAddress(address.id),
+                },
+            ],
+        },
     ]
 
     constructor(
@@ -43,4 +56,6 @@ export class AddressComponent implements OnInit {
             },
         })
     }
+
+    viewAddress = (address: number) => {}
 }
