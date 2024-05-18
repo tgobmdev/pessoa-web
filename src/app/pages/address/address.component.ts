@@ -51,8 +51,8 @@ export class AddressComponent implements OnInit {
             next: (res) => {
                 this.dataSet = res
             },
-            error: (err) => {
-                this.message.error(err)
+            error: (_err) => {
+                this.message.error('Internal error. try again or later.')
             },
         })
     }
