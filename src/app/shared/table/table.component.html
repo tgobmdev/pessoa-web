@@ -1,4 +1,9 @@
-<nz-table #table [nzData]="dataSet">
+<nz-table
+    #table
+    [nzTitle]="title"
+    [nzData]="dataSet"
+    [nzFrontPagination]="frontPagination"
+>
     <thead>
         <tr>
             <th *ngFor="let col of columns">{{ col.header }}</th>

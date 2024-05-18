@@ -6,6 +6,8 @@ import { Column } from './models/table-common-models.interface'
     templateUrl: './table.component.html',
 })
 export class TableComponent<T extends Record<string, any>> {
-    @Input() dataSet!: T[]
+    @Input() title: string = ''
+    @Input() dataSet: T[] = []
     @Input() columns!: Column[]
+    @Input() frontPagination: boolean = true
 }

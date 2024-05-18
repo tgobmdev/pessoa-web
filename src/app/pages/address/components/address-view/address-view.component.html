@@ -1,1 +1,77 @@
-<p>address-view works!</p>
+<nz-divider nzOrientation="left" />
+<form nz-form nzLayout="vertical" [formGroup]="addressForm">
+    <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+        <div nz-col class="gutter-row" [nzSpan]="6">
+            <nz-form-item>
+                <nz-form-label>ID</nz-form-label>
+                <nz-form-control>
+                    <input nz-input type="number" formControlName="id" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <div nz-col class="gutter-row" [nzSpan]="6">
+            <nz-form-item>
+                <nz-form-label>Street</nz-form-label>
+                <nz-form-control>
+                    <input nz-input formControlName="street" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <div nz-col class="gutter-row" [nzSpan]="6">
+            <nz-form-item>
+                <nz-form-label>Street Number</nz-form-label>
+                <nz-form-control>
+                    <input nz-input formControlName="streetNumber" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <div nz-col class="gutter-row" [nzSpan]="6">
+            <nz-form-item>
+                <nz-form-label>Zip Code</nz-form-label>
+                <nz-form-control>
+                    <input nz-input formControlName="zipcode" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <nz-divider nzType="vertical" />
+    <div nz-row [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }">
+        <div nz-col class="gutter-row" [nzSpan]="8">
+            <nz-form-item>
+                <nz-form-label>City</nz-form-label>
+                <nz-form-control>
+                    <input nz-input formControlName="city" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <div nz-col class="gutter-row" [nzSpan]="8">
+            <nz-form-item>
+                <nz-form-label>State</nz-form-label>
+                <nz-form-control>
+                    <input nz-input formControlName="state" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <div nz-col class="gutter-row" [nzSpan]="8">
+            <nz-form-item>
+                <nz-form-label>State Shortname</nz-form-label>
+                <nz-form-control>
+                    <input nz-input formControlName="stateShortname" />
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+</form>
+<nz-divider />
+<app-table
+    [dataSet]="data"
+    [columns]="columns"
+    [title]="'Persons'"
+    [frontPagination]="false"
+></app-table>
