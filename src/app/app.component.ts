@@ -1,10 +1,10 @@
 import { CommonModule } from '@angular/common'
 import { Component } from '@angular/core'
 import { RouterOutlet } from '@angular/router'
+import { MenuModule } from '@components/menu/menu.module'
+import { MenuItemModel } from '@components/menu/models/menu-item.model'
 import { NzIconModule } from 'ng-zorro-antd/icon'
 import { NzLayoutModule } from 'ng-zorro-antd/layout'
-import { MenuModule } from './shared/menu/menu.module'
-import { MenuItem } from './shared/menu/models/menu-item.interface'
 
 @Component({
     selector: 'app-root',
@@ -22,7 +22,7 @@ import { MenuItem } from './shared/menu/models/menu-item.interface'
 export class AppComponent {
     isCollapsed = false
 
-    menuItems: MenuItem[] = [
+    menuItems: MenuItemModel[] = [
         { label: 'Persons', iconType: 'user', routerLink: 'person' },
         { label: 'Addresses', iconType: 'book', routerLink: 'address' },
     ]
