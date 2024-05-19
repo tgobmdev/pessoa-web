@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
+import { ActionHandler } from '@shared/table/models/action-handler.model'
+import { PartialColumn } from '@shared/table/models/column.model'
+import { TableModule } from '@shared/table/table.module'
 import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message'
-import { Column } from '../../shared/table/models/table-common-models.interface'
-import { TableModule } from '../../shared/table/table.module'
 import { AddressService } from './address.service'
-import { AddressDetailsResponse } from './response/address-details-response.interface'
+import { addressColumnsConfig } from './config/address-columns.config'
+import { AddressDetailsResponse } from './response/address-details.response'
 
 @Component({
     selector: 'app-address',
@@ -14,35 +16,16 @@ import { AddressDetailsResponse } from './response/address-details-response.inte
     styleUrl: './address.component.css',
 })
 export class AddressComponent implements OnInit {
-    dataSet: AddressDetailsResponse[] = []
-
-    columns: Column[] = [
-        { type: 'data', field: 'id', header: 'ID' },
-        { type: 'data', field: 'street', header: 'Street' },
-        { type: 'data', field: 'zipcode', header: 'ZipCode' },
-        { type: 'data', field: 'streetNumber', header: 'Street Number' },
-        { type: 'data', field: 'city', header: 'City' },
-        { type: 'data', field: 'state', header: 'State' },
-        { type: 'data', field: 'stateShortname', header: 'State Shortname' },
-        {
-            type: 'action',
-            header: 'Action',
-            actions: [
-                {
-                    tooltipTitle: 'View',
-                    icon: 'eye',
-                    actionFunction: (address: AddressDetailsResponse) =>
-                        this.viewAddress(address.id),
-                },
-            ],
-        },
-    ]
+    data: AddressDetailsResponse[] = []
+    columns: PartialColumn[]
 
     constructor(
         private readonly router: Router,
         private readonly message: NzMessageService,
         private readonly addressService: AddressService
-    ) {}
+    ) {
+        this.columns = addressColumnsConfig(this.getActions())
+    }
 
     ngOnInit(): void {
         this.getAllAddresses()
@@ -51,7 +34,7 @@ export class AddressComponent implements OnInit {
     getAllAddresses = () => {
         this.addressService.getAllAddresses().subscribe({
             next: (res) => {
-                this.dataSet = res
+                this.data = res
             },
             error: (_err) => {
                 this.message.error('Internal error. try again or later.')
@@ -61,5 +44,10 @@ export class AddressComponent implements OnInit {
 
     viewAddress = (id: number) => {
         this.router.navigate([`address/${id}`])
+    }
+
+    private getActions = (): ActionHandler => {
+        const actionView = (id: number): void => this.viewAddress(id)
+        return { actionView: actionView.bind(this) }
     }
 }

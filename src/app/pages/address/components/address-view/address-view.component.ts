@@ -6,18 +6,19 @@ import {
     ReactiveFormsModule,
 } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router'
+import { PartialColumn } from '@shared/table/models/column.model'
 import { NzCollapseModule } from 'ng-zorro-antd/collapse'
 import { NzDividerModule } from 'ng-zorro-antd/divider'
 import { NzFormModule } from 'ng-zorro-antd/form'
 import { NzGridModule } from 'ng-zorro-antd/grid'
 import { NzInputModule } from 'ng-zorro-antd/input'
 import { NzMessageService } from 'ng-zorro-antd/message'
-import { Column } from '../../../../shared/table/models/table-common-models.interface'
 import { TableModule } from '../../../../shared/table/table.module'
 import { AddressService } from '../../address.service'
-import { AddressInfoWithPeopleResponse } from '../../response/address-Info-with-people-response.interface'
-import { AddressDetailsResponse } from '../../response/address-details-response.interface'
-import { PersonDetailsResponse } from '../../response/person-details-response.interface'
+import { personColumnsConfig } from '../../config/person-columns.config'
+import { AddressInfoWithPeopleResponse } from '../../response/address-Info-with-people.response'
+import { AddressDetailsResponse } from '../../response/address-details.response'
+import { PersonDetailsResponse } from '../../response/person-details.response'
 
 @Component({
     selector: 'app-address-view',
@@ -48,12 +49,7 @@ export class AddressViewComponent implements OnInit {
     }>
 
     data: PersonDetailsResponse[] = []
-
-    columns: Column[] = [
-        { type: 'data', field: 'id', header: 'ID' },
-        { type: 'data', field: 'namePerson', header: 'Name Person' },
-        { type: 'data', field: 'dateOfBirth', header: 'Date of Birth' },
-    ]
+    columns: PartialColumn[]
 
     constructor(
         private readonly route: ActivatedRoute,
@@ -62,6 +58,7 @@ export class AddressViewComponent implements OnInit {
         private readonly addressService: AddressService
     ) {
         this.initializeForm()
+        this.columns = personColumnsConfig
     }
 
     ngOnInit(): void {
