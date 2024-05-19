@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core'
-import { PartialColumn } from './models/column.model'
+import { PartialColumnModel } from './models/column.model'
 
 @Component({
     selector: 'app-table',
@@ -8,7 +8,7 @@ import { PartialColumn } from './models/column.model'
 export class TableComponent<T extends Record<string, any>> {
     @Input() title: string = ''
     @Input() dataSet: T[] = []
-    @Input() columns!: PartialColumn[]
+    @Input() columns!: PartialColumnModel[]
     @Input() frontPagination: boolean = true
     @Input() bordered: boolean = false
 }
