@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core'
 import { Router } from '@angular/router'
-import { ActionHandler } from '@shared/table/models/action-handler.model'
-import { PartialColumn } from '@shared/table/models/column.model'
-import { TableModule } from '@shared/table/table.module'
+import { ActionHandlerModel } from '@components/table/models/action-handler.model'
+import { PartialColumnModel } from '@components/table/models/column.model'
+import { TableModule } from '@components/table/table.module'
+import { addressTableColumnsConfig } from '@config/table/address-table-columns.config'
+import { AddressDetailsResponse } from '@response/address-details.response'
+import { AddressService } from '@service/address.service'
 import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message'
-import { AddressService } from './address.service'
-import { addressColumnsConfig } from './config/address-columns.config'
-import { AddressDetailsResponse } from './response/address-details.response'
 
 @Component({
     selector: 'app-address',
@@ -17,14 +17,14 @@ import { AddressDetailsResponse } from './response/address-details.response'
 })
 export class AddressComponent implements OnInit {
     data: AddressDetailsResponse[] = []
-    columns: PartialColumn[]
+    columns: PartialColumnModel[]
 
     constructor(
         private readonly router: Router,
         private readonly message: NzMessageService,
         private readonly addressService: AddressService
     ) {
-        this.columns = addressColumnsConfig(this.getActions())
+        this.columns = addressTableColumnsConfig(this.getActions())
     }
 
     ngOnInit(): void {
@@ -46,7 +46,7 @@ export class AddressComponent implements OnInit {
         this.router.navigate([`address/${id}`])
     }
 
-    private getActions = (): ActionHandler => {
+    private getActions = (): ActionHandlerModel => {
         const actionView = (id: number): void => this.viewAddress(id)
         return { actionView: actionView.bind(this) }
     }

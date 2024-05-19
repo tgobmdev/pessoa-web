@@ -1,6 +1,6 @@
-import { PartialColumn } from '@shared/table/models/column.model'
+import { PartialColumnModel } from '@components/table/models/column.model'
 
-export const personColumnsConfig: PartialColumn[] = [
+export const personTableColumnsConfig: PartialColumnModel[] = [
     { header: 'ID', field: 'id' },
     { header: 'Name Person', field: 'namePerson' },
     { header: 'Date of Birth', field: 'dateOfBirth' },

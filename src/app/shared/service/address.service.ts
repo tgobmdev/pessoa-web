@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core'
-import { BaseHttpService } from '@shared/base-http.service'
+import { AddressInfoWithPeopleResponse } from '@response/address-Info-with-people.response'
+import { AddressDetailsResponse } from '@response/address-details.response'
 import { Observable } from 'rxjs'
-import { AddressInfoWithPeopleResponse } from './response/address-Info-with-people.response'
-import { AddressDetailsResponse } from './response/address-details.response'
+import { BaseHttpService } from './base-http.service'
 
 @Injectable({
     providedIn: 'root',

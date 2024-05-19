@@ -6,19 +6,19 @@ import {
     ReactiveFormsModule,
 } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router'
-import { PartialColumn } from '@shared/table/models/column.model'
+import { PartialColumnModel } from '@components/table/models/column.model'
+import { TableModule } from '@components/table/table.module'
+import { personTableColumnsConfig } from '@config/table/person-table-columns.config'
+import { AddressInfoWithPeopleResponse } from '@response/address-Info-with-people.response'
+import { AddressDetailsResponse } from '@response/address-details.response'
+import { PersonDetailsResponse } from '@response/person-details.response'
+import { AddressService } from '@service/address.service'
 import { NzCollapseModule } from 'ng-zorro-antd/collapse'
 import { NzDividerModule } from 'ng-zorro-antd/divider'
 import { NzFormModule } from 'ng-zorro-antd/form'
 import { NzGridModule } from 'ng-zorro-antd/grid'
 import { NzInputModule } from 'ng-zorro-antd/input'
 import { NzMessageService } from 'ng-zorro-antd/message'
-import { TableModule } from '../../../../shared/table/table.module'
-import { AddressService } from '../../address.service'
-import { personColumnsConfig } from '../../config/person-columns.config'
-import { AddressInfoWithPeopleResponse } from '../../response/address-Info-with-people.response'
-import { AddressDetailsResponse } from '../../response/address-details.response'
-import { PersonDetailsResponse } from '../../response/person-details.response'
 
 @Component({
     selector: 'app-address-view',
@@ -49,7 +49,7 @@ export class AddressViewComponent implements OnInit {
     }>
 
     data: PersonDetailsResponse[] = []
-    columns: PartialColumn[]
+    columns: PartialColumnModel[]
 
     constructor(
         private readonly route: ActivatedRoute,
@@ -58,7 +58,7 @@ export class AddressViewComponent implements OnInit {
         private readonly addressService: AddressService
     ) {
         this.initializeForm()
-        this.columns = personColumnsConfig
+        this.columns = personTableColumnsConfig
     }
 
     ngOnInit(): void {

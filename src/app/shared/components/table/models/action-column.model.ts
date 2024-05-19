@@ -1,4 +1,4 @@
-export interface ActionColumn {
+export interface ActionColumnModel {
     tooltipTitle: string
     icon: string
     onClick: Function
