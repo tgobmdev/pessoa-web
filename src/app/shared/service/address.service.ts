@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
-import { AddressInfoWithPeopleResponse } from '@response/address-Info-with-people.response'
-import { AddressDetailsResponse } from '@response/address-details.response'
+import { AddressPeopleResponse } from '@models/address-person.model'
+import { AddressResponse } from '@models/address.model'
 import { Observable } from 'rxjs'
 import { BaseHttpService } from './base-http.service'
 
@@ -10,14 +10,14 @@ import { BaseHttpService } from './base-http.service'
 export class AddressService extends BaseHttpService {
     private endpoint = 'address'
 
-    getAllAddresses = (): Observable<AddressDetailsResponse[]> => {
-        return this.get<AddressDetailsResponse[]>(this.endpoint)
+    getAllAddresses = (): Observable<AddressResponse[]> => {
+        return this.get<AddressResponse[]>(this.endpoint)
     }
 
     getAddressInfoWithPeople = (
         id: number
-    ): Observable<AddressInfoWithPeopleResponse> => {
+    ): Observable<AddressPeopleResponse> => {
         const url = `${this.endpoint}/${id}/persons`
-        return this.get<AddressInfoWithPeopleResponse>(url)
+        return this.get<AddressPeopleResponse>(url)
     }
 }

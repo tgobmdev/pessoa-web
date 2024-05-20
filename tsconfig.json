@@ -23,7 +23,7 @@
         "paths": {
             "@components/*": ["src/app/shared/components/*"],
             "@config/*": ["src/app/shared/config/*"],
-            "@response/*": ["src/app/shared/response/*"],
+            "@models/*": ["src/app/shared/models/*"],
             "@service/*": ["src/app/shared/service/*"]
         }
     },

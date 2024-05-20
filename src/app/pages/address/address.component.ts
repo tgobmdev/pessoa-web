@@ -4,7 +4,7 @@ import { ActionHandlerModel } from '@components/table/models/action-handler.mode
 import { PartialColumnModel } from '@components/table/models/column.model'
 import { TableModule } from '@components/table/table.module'
 import { addressTableColumnsConfig } from '@config/table/address-table-columns.config'
-import { AddressDetailsResponse } from '@response/address-details.response'
+import { AddressResponse } from '@models/address.model'
 import { AddressService } from '@service/address.service'
 import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message'
 
@@ -16,7 +16,7 @@ import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message'
     styleUrl: './address.component.css',
 })
 export class AddressComponent implements OnInit {
-    data: AddressDetailsResponse[] = []
+    data: AddressResponse[] = []
     columns: PartialColumnModel[]
 
     constructor(

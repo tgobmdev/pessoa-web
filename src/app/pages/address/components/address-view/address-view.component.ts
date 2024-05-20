@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core'
-import {
-    FormControl,
-    FormGroup,
-    NonNullableFormBuilder,
-    ReactiveFormsModule,
-} from '@angular/forms'
+import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router'
 import { PartialColumnModel } from '@components/table/models/column.model'
 import { TableModule } from '@components/table/table.module'
+import { addressFormView } from '@config/form/address-form.config'
 import { personTableColumnsConfig } from '@config/table/person-table-columns.config'
-import { AddressInfoWithPeopleResponse } from '@response/address-Info-with-people.response'
-import { AddressDetailsResponse } from '@response/address-details.response'
-import { PersonDetailsResponse } from '@response/person-details.response'
+import { AddressPeopleResponse } from '@models/address-person.model'
+import { AddressResponse } from '@models/address.model'
+import { PersonResponse } from '@models/person.model'
 import { AddressService } from '@service/address.service'
+import { DynamicFormBuilderService } from '@service/dynamic-form-builder.service'
 import { NzCollapseModule } from 'ng-zorro-antd/collapse'
 import { NzDividerModule } from 'ng-zorro-antd/divider'
 import { NzFormModule } from 'ng-zorro-antd/form'
@@ -37,47 +34,28 @@ import { NzMessageService } from 'ng-zorro-antd/message'
 })
 export class AddressViewComponent implements OnInit {
     addressId!: number
+    addressForm: FormGroup
 
-    addressForm!: FormGroup<{
-        id: FormControl<number>
-        street: FormControl<string>
-        streetNumber: FormControl<string>
-        zipcode: FormControl<string>
-        city: FormControl<string>
-        state: FormControl<string>
-        stateShortname: FormControl<string>
-    }>
-
-    data: PersonDetailsResponse[] = []
+    data: PersonResponse[] = []
     columns: PartialColumnModel[]
 
     constructor(
         private readonly route: ActivatedRoute,
         private readonly message: NzMessageService,
-        private readonly fb: NonNullableFormBuilder,
-        private readonly addressService: AddressService
+        private readonly addressService: AddressService,
+        private readonly formBuilderService: DynamicFormBuilderService
     ) {
-        this.initializeForm()
         this.columns = personTableColumnsConfig
+        this.addressForm =
+            this.formBuilderService.createFormFromObject(addressFormView)
     }
 
     ngOnInit(): void {
         this.loadAddressDetails()
+        this.addressForm.disable()
     }
 
-    initializeForm = () => {
-        this.addressForm = this.fb.group({
-            id: [{ value: Number.NaN, disabled: true }],
-            street: [{ value: '', disabled: true }],
-            streetNumber: [{ value: '', disabled: true }],
-            zipcode: [{ value: '', disabled: true }],
-            city: [{ value: '', disabled: true }],
-            state: [{ value: '', disabled: true }],
-            stateShortname: [{ value: '', disabled: true }],
-        })
-    }
-
-    updateAddressForm = (addressDetails: AddressDetailsResponse) => {
+    updateAddressForm = (addressDetails: AddressResponse) => {
         this.addressForm.patchValue({
             id: addressDetails.id,
             street: addressDetails.street,
@@ -91,9 +69,9 @@ export class AddressViewComponent implements OnInit {
 
     fetchAddressInfo = (addressId: number) => {
         this.addressService.getAddressInfoWithPeople(addressId).subscribe({
-            next: (res: AddressInfoWithPeopleResponse) => {
-                this.updateAddressForm(res.addressDetailsResponse)
-                this.data = res.personDetailsResponseList
+            next: (res: AddressPeopleResponse) => {
+                this.updateAddressForm(res.address)
+                this.data = res.persons
             },
             error: (err) => {
                 this.message.error(err)
