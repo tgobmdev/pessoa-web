@@ -4,6 +4,7 @@
     "compilerOptions": {
         "baseUrl": "./",
         "outDir": "./dist/out-tsc",
+        "noImplicitAny": true,
         "strict": true,
         "noImplicitOverride": true,
         "noPropertyAccessFromIndexSignature": true,
@@ -21,10 +22,13 @@
         "useDefineForClassFields": false,
         "lib": ["ES2022", "dom"],
         "paths": {
+            "@builders/*": ["src/app/shared/builders/*"],
             "@components/*": ["src/app/shared/components/*"],
-            "@config/*": ["src/app/shared/config/*"],
+            "@configs/*": ["src/app/shared/configs/*"],
             "@models/*": ["src/app/shared/models/*"],
-            "@service/*": ["src/app/shared/service/*"]
+            "@services/*": ["src/app/shared/services/*"],
+            "@utils/*": ["src/app/shared/utils/*"],
+            "@validators/*": ["src/app/shared/validators/*"]
         }
     },
     "angularCompilerOptions": {

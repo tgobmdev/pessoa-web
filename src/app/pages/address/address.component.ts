@@ -3,9 +3,9 @@ import { Router } from '@angular/router'
 import { ActionHandlerModel } from '@components/table/models/action-handler.model'
 import { PartialColumnModel } from '@components/table/models/column.model'
 import { TableModule } from '@components/table/table.module'
-import { addressTableColumnsConfig } from '@config/table/address-table-columns.config'
+import { addressTableColumnsConfig } from '@configs/table/address-table-columns.config'
 import { AddressResponse } from '@models/address.model'
-import { AddressService } from '@service/address.service'
+import { AddressService } from '@services/address.service'
 import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message'
 
 @Component({
