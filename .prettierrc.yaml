@@ -1,8 +1,7 @@
 trailingComma: 'es5'
-tabWidth: 4
 semi: false
 singleQuote: true
-bracketSpacin: true
+bracketSpacing: true
 bracketSameLine: true
 endOfLine: 'lf'
 useTabs: true
