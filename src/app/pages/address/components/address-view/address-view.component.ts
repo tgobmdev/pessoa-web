@@ -65,8 +65,7 @@ export class AddressViewComponent implements OnInit {
 					)
 					this.data = res.persons
 				} catch (err) {
-					const errorMessage =
-						err instanceof Error ? err.message : String(err)
+					const errorMessage = err instanceof Error ? err.message : String(err)
 					this.message.error(errorMessage)
 				}
 			},

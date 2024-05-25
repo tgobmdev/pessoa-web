@@ -17,9 +17,6 @@ export class DynamicFormValidatorBuilder {
 	}
 
 	build = (): DynamicFormValidator => {
-		return DynamicFormValidator.create(
-			this._referenceKeys,
-			this._targetKeys
-		)
+		return DynamicFormValidator.create(this._referenceKeys, this._targetKeys)
 	}
 }

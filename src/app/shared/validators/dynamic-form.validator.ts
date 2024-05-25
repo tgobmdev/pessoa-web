@@ -23,18 +23,12 @@ export class DynamicFormValidator {
 	}
 
 	ensureNoExtraKeys(): this {
-		const extraKeys = SetUtil.excludeKeys(
-			this._targetKeys,
-			this._referenceKeys
-		)
+		const extraKeys = SetUtil.excludeKeys(this._targetKeys, this._referenceKeys)
 
 		const condition = extraKeys.length > 0
 		const errorMessage = `Extra keys found: ${Array.from(extraKeys).join(', ')}`
 
-		ErrorUtil.throwErrorIfConditionMet(
-			condition,
-			() => new Error(errorMessage)
-		)
+		ErrorUtil.throwErrorIfConditionMet(condition, () => new Error(errorMessage))
 		return this
 	}
 
@@ -47,10 +41,7 @@ export class DynamicFormValidator {
 		const condition = missingKeys.length > 0
 		const errorMessage = `Missing keys found: ${Array.from(missingKeys).join(', ')}`
 
-		ErrorUtil.throwErrorIfConditionMet(
-			condition,
-			() => new Error(errorMessage)
-		)
+		ErrorUtil.throwErrorIfConditionMet(condition, () => new Error(errorMessage))
 		return this
 	}
 }
