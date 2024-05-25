@@ -1,5 +1,5 @@
 export interface ActionColumnModel {
-    tooltipTitle: string
-    icon: string
-    onClick: Function
+	tooltipTitle: string
+	icon: string
+	onClick: Function
 }

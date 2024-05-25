@@ -7,14 +7,14 @@ import { NzToolTipModule } from 'ng-zorro-antd/tooltip'
 import { TableComponent } from './table.component'
 
 @NgModule({
-    declarations: [TableComponent],
-    imports: [
-        CommonModule,
-        NzTableModule,
-        NzIconModule,
-        NzDividerModule,
-        NzToolTipModule,
-    ],
-    exports: [TableComponent],
+	declarations: [TableComponent],
+	imports: [
+		CommonModule,
+		NzTableModule,
+		NzIconModule,
+		NzDividerModule,
+		NzToolTipModule,
+	],
+	exports: [TableComponent],
 })
 export class TableModule {}

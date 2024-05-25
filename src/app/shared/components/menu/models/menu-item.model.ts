@@ -1,5 +1,5 @@
 export interface MenuItemModel {
-    label: string
-    iconType: string
-    routerLink: string
+	label: string
+	iconType: string
+	routerLink: string
 }

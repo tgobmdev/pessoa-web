@@ -13,12 +13,12 @@ import { provideNzIcons } from './icons-provider'
 registerLocaleData(pt)
 
 export const appConfig: ApplicationConfig = {
-    providers: [
-        provideRouter(routes),
-        provideNzIcons(),
-        provideNzI18n(pt_BR),
-        importProvidersFrom(FormsModule),
-        provideAnimationsAsync(),
-        provideHttpClient(),
-    ],
+	providers: [
+		provideRouter(routes),
+		provideNzIcons(),
+		provideNzI18n(pt_BR),
+		importProvidersFrom(FormsModule),
+		provideAnimationsAsync(),
+		provideHttpClient(),
+	],
 }
