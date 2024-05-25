@@ -74,7 +74,9 @@
 </form>
 <nz-divider />
 <app-table
+	[title]="'Persons'"
 	[dataSet]="data"
 	[columns]="columns"
-	[title]="'Persons'"
-	[frontPagination]="false"></app-table>
+	[frontPagination]="false"
+	[bordered]="true"
+	[outerBordered]="true"></app-table>

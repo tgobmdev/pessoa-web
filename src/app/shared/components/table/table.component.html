@@ -2,7 +2,8 @@
 	[nzTitle]="title"
 	[nzData]="dataSet"
 	[nzFrontPagination]="frontPagination"
-	[nzBordered]="bordered">
+	[nzBordered]="bordered"
+	[nzOuterBordered]="outerBordered">
 	<thead>
 		<tr>
 			<th class="table-header" *ngFor="let col of columns">
@@ -12,7 +13,7 @@
 	</thead>
 	<tbody>
 		<tr *ngFor="let item of dataSet">
-			<td class="table-cell" *ngFor="let col of columns">
+			<td *ngFor="let col of columns">
 				{{ col.field ? item[col.field] : '' }}
 				<ng-container *ngIf="col.actions">
 					<ng-container *ngFor="let action of col.actions">

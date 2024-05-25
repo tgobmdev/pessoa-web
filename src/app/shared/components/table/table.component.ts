@@ -4,6 +4,7 @@ import { PartialColumnModel } from './models/column.model'
 @Component({
 	selector: 'app-table',
 	templateUrl: './table.component.html',
+	styleUrl: './table.component.css',
 })
 export class TableComponent<T extends Record<string, any>> {
 	@Input() title: string = ''
@@ -11,4 +12,5 @@ export class TableComponent<T extends Record<string, any>> {
 	@Input() columns!: PartialColumnModel[]
 	@Input() frontPagination: boolean = true
 	@Input() bordered: boolean = false
+	@Input() outerBordered: boolean = false
 }
