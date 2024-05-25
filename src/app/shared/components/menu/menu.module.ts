@@ -6,8 +6,8 @@ import { NzMenuModule } from 'ng-zorro-antd/menu'
 import { MenuComponent } from './menu.component'
 
 @NgModule({
-    declarations: [MenuComponent],
-    imports: [CommonModule, RouterLink, NzIconModule, NzMenuModule],
-    exports: [MenuComponent],
+	declarations: [MenuComponent],
+	imports: [CommonModule, RouterLink, NzIconModule, NzMenuModule],
+	exports: [MenuComponent],
 })
 export class MenuModule {}

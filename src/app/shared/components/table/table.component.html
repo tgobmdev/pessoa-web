@@ -1,37 +1,35 @@
 <nz-table
-    [nzTitle]="title"
-    [nzData]="dataSet"
-    [nzFrontPagination]="frontPagination"
-    [nzBordered]="bordered"
->
-    <thead>
-        <tr>
-            <th class="table-header" *ngFor="let col of columns">
-                {{ col.header }}
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let item of dataSet">
-            <td class="table-cell" *ngFor="let col of columns">
-                {{ col.field ? item[col.field] : '' }}
-                <ng-container *ngIf="col.actions">
-                    <ng-container *ngFor="let action of col.actions">
-                        <a
-                            nz-tooltip
-                            [nzTooltipTitle]="action.tooltipTitle"
-                            nzTooltipPlacement="top"
-                            (click)="action.onClick(item)"
-                            ><span
-                                nz-icon
-                                [nzType]="action.icon"
-                                nzTheme="outline"
-                            ></span
-                        ></a>
-                        <nz-divider nzType="vertical"></nz-divider>
-                    </ng-container>
-                </ng-container>
-            </td>
-        </tr>
-    </tbody>
+	[nzTitle]="title"
+	[nzData]="dataSet"
+	[nzFrontPagination]="frontPagination"
+	[nzBordered]="bordered">
+	<thead>
+		<tr>
+			<th class="table-header" *ngFor="let col of columns">
+				{{ col.header }}
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let item of dataSet">
+			<td class="table-cell" *ngFor="let col of columns">
+				{{ col.field ? item[col.field] : '' }}
+				<ng-container *ngIf="col.actions">
+					<ng-container *ngFor="let action of col.actions">
+						<a
+							nz-tooltip
+							[nzTooltipTitle]="action.tooltipTitle"
+							nzTooltipPlacement="top"
+							(click)="action.onClick(item)"
+							><span
+								nz-icon
+								[nzType]="action.icon"
+								nzTheme="outline"></span
+						></a>
+						<nz-divider nzType="vertical"></nz-divider>
+					</ng-container>
+				</ng-container>
+			</td>
+		</tr>
+	</tbody>
 </nz-table>

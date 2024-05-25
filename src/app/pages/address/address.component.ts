@@ -9,45 +9,45 @@ import { AddressService } from '@services/address.service'
 import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message'
 
 @Component({
-    selector: 'app-address',
-    standalone: true,
-    imports: [TableModule, NzMessageModule],
-    templateUrl: './address.component.html',
-    styleUrl: './address.component.css',
+	selector: 'app-address',
+	standalone: true,
+	imports: [TableModule, NzMessageModule],
+	templateUrl: './address.component.html',
+	styleUrl: './address.component.css',
 })
 export class AddressComponent implements OnInit {
-    data: AddressResponse[] = []
-    columns: PartialColumnModel[]
+	data: AddressResponse[] = []
+	columns: PartialColumnModel[]
 
-    constructor(
-        private readonly router: Router,
-        private readonly message: NzMessageService,
-        private readonly addressService: AddressService
-    ) {
-        this.columns = addressTableColumnsConfig(this.getActions())
-    }
+	constructor(
+		private readonly router: Router,
+		private readonly message: NzMessageService,
+		private readonly addressService: AddressService
+	) {
+		this.columns = addressTableColumnsConfig(this.getActions())
+	}
 
-    ngOnInit(): void {
-        this.getAllAddresses()
-    }
+	ngOnInit(): void {
+		this.getAllAddresses()
+	}
 
-    getAllAddresses = () => {
-        this.addressService.getAllAddresses().subscribe({
-            next: (res) => {
-                this.data = res
-            },
-            error: (_err) => {
-                this.message.error('Internal error. try again or later.')
-            },
-        })
-    }
+	getAllAddresses = () => {
+		this.addressService.getAllAddresses().subscribe({
+			next: (res) => {
+				this.data = res
+			},
+			error: (_err) => {
+				this.message.error('Internal error. try again or later.')
+			},
+		})
+	}
 
-    viewAddress = (id: number) => {
-        this.router.navigate([`address/${id}`])
-    }
+	viewAddress = (id: number) => {
+		this.router.navigate([`address/${id}`])
+	}
 
-    private getActions = (): ActionHandlerModel => {
-        const actionView = (id: number): void => this.viewAddress(id)
-        return { actionView: actionView.bind(this) }
-    }
+	private getActions = (): ActionHandlerModel => {
+		const actionView = (id: number): void => this.viewAddress(id)
+		return { actionView: actionView.bind(this) }
+	}
 }

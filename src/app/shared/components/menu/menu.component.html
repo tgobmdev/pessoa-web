@@ -1,8 +1,8 @@
 <ul nz-menu nzTheme="dark" nzMode="inline">
-    <li nz-menu-item *ngFor="let item of menuItems">
-        <a [routerLink]="item.routerLink">
-            <span nz-icon [nzType]="item.iconType"></span>
-            <span>{{ item.label }}</span>
-        </a>
-    </li>
+	<li nz-menu-item *ngFor="let item of menuItems">
+		<a [routerLink]="item.routerLink">
+			<span nz-icon [nzType]="item.iconType"></span>
+			<span>{{ item.label }}</span>
+		</a>
+	</li>
 </ul>

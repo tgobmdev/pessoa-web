@@ -2,3 +2,7 @@ trailingComma: 'es5'
 tabWidth: 4
 semi: false
 singleQuote: true
+bracketSpacin: true
+bracketSameLine: true
+endOfLine: 'lf'
+useTabs: true

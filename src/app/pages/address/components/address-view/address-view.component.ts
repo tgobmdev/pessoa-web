@@ -17,76 +17,76 @@ import { NzInputModule } from 'ng-zorro-antd/input'
 import { NzMessageService } from 'ng-zorro-antd/message'
 
 @Component({
-    selector: 'app-address-view',
-    standalone: true,
-    imports: [
-        NzDividerModule,
-        NzGridModule,
-        NzFormModule,
-        NzInputModule,
-        NzCollapseModule,
-        TableModule,
-        ReactiveFormsModule,
-    ],
-    templateUrl: './address-view.component.html',
-    styleUrl: './address-view.component.css',
+	selector: 'app-address-view',
+	standalone: true,
+	imports: [
+		NzDividerModule,
+		NzGridModule,
+		NzFormModule,
+		NzInputModule,
+		NzCollapseModule,
+		TableModule,
+		ReactiveFormsModule,
+	],
+	templateUrl: './address-view.component.html',
+	styleUrl: './address-view.component.css',
 })
 export class AddressViewComponent implements OnInit {
-    addressId!: number
-    addressForm: FormGroup
+	addressId!: number
+	addressForm: FormGroup
 
-    data: PersonResponse[] = []
-    columns: PartialColumnModel[]
+	data: PersonResponse[] = []
+	columns: PartialColumnModel[]
 
-    constructor(
-        private readonly route: ActivatedRoute,
-        private readonly message: NzMessageService,
-        private readonly addressService: AddressService,
-        private readonly dynamicFormService: DynamicFormService
-    ) {
-        this.getAddressId()
-        this.columns = personTableColumnsConfig
-        this.addressForm =
-            this.dynamicFormService.createFormGroupFromObject(addressFormView)
-    }
+	constructor(
+		private readonly route: ActivatedRoute,
+		private readonly message: NzMessageService,
+		private readonly addressService: AddressService,
+		private readonly dynamicFormService: DynamicFormService
+	) {
+		this.getAddressId()
+		this.columns = personTableColumnsConfig
+		this.addressForm =
+			this.dynamicFormService.createFormGroupFromObject(addressFormView)
+	}
 
-    ngOnInit(): void {
-        this.loadAddressDetails()
-        this.addressForm.disable()
-    }
+	ngOnInit(): void {
+		this.loadAddressDetails()
+		this.addressForm.disable()
+	}
 
-    fetchAddressInfo = (addressId: number) => {
-        this.addressService.getAddressInfoWithPeople(addressId).subscribe({
-            next: (res: AddressPeopleResponse) => {
-                try {
-                    this.dynamicFormService.updateFormGroupFromObject(
-                        this.addressForm,
-                        res.address
-                    )
-                    this.data = res.persons
-                } catch (err) {
-                    const errorMessage =
-                        err instanceof Error ? err.message : String(err)
-                    this.message.error(errorMessage)
-                }
-            },
-            error: (err) => {
-                this.message.error(err)
-            },
-        })
-    }
-    loadAddressDetails = () => {
-        this.fetchAddressInfo(this.addressId)
-    }
+	fetchAddressInfo = (addressId: number) => {
+		this.addressService.getAddressInfoWithPeople(addressId).subscribe({
+			next: (res: AddressPeopleResponse) => {
+				try {
+					this.dynamicFormService.updateFormGroupFromObject(
+						this.addressForm,
+						res.address
+					)
+					this.data = res.persons
+				} catch (err) {
+					const errorMessage =
+						err instanceof Error ? err.message : String(err)
+					this.message.error(errorMessage)
+				}
+			},
+			error: (err) => {
+				this.message.error(err)
+			},
+		})
+	}
+	loadAddressDetails = () => {
+		this.fetchAddressInfo(this.addressId)
+	}
 
-    getAddressId = (): void => {
-        this.route.paramMap.subscribe({
-            next: (params) => {
-                this.addressId = Number(params.get('id'))
-            },
-            error: (err) => {
-                this.message.error(err)
-            },
-        })
-    }
+	getAddressId = (): void => {
+		this.route.paramMap.subscribe({
+			next: (params) => {
+				this.addressId = Number(params.get('id'))
+			},
+			error: (err) => {
+				this.message.error(err)
+			},
+		})
+	}
 }
