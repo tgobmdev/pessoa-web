@@ -1,30 +1,30 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { Router } from '@angular/router'
-import { ActionHandlerModel } from '@components/table/models/action-handler.model'
-import { PartialColumnModel } from '@components/table/models/column.model'
+import { ActionHandler } from '@components/table/models/action-handler.interface'
+import { PartialColumn } from '@components/table/models/column.interface'
 import { TableModule } from '@components/table/table.module'
-import { addressTableColumnsConfig } from '@configs/table/address-table-columns.config'
-import { AddressResponse } from '@models/address.model'
-import { AddressService } from '@services/address.service'
 import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message'
+import { addressColumns } from 'src/app/core/configs/table-columns/address-columns'
+import { AddressResponse } from 'src/app/core/models/address-response.interface'
+import { AddressService } from 'src/app/core/services/address.service'
 
 @Component({
-	selector: 'app-address',
+	selector: 'app-adress-list',
 	standalone: true,
 	imports: [TableModule, NzMessageModule],
-	templateUrl: './address.component.html',
-	styleUrl: './address.component.css',
+	templateUrl: './adress-list.component.html',
+	styleUrl: './adress-list.component.css',
 })
-export class AddressComponent implements OnInit {
+export class AdressListComponent {
 	data: AddressResponse[] = []
-	columns: PartialColumnModel[]
+	columns: PartialColumn[]
 
 	constructor(
 		private readonly router: Router,
 		private readonly message: NzMessageService,
 		private readonly addressService: AddressService
 	) {
-		this.columns = addressTableColumnsConfig(this.getActions())
+		this.columns = addressColumns(this.getActions())
 	}
 
 	ngOnInit(): void {
@@ -43,10 +43,10 @@ export class AddressComponent implements OnInit {
 	}
 
 	viewAddress = (id: number) => {
-		this.router.navigate([`address/${id}`])
+		this.router.navigate([`addresses/${id}`])
 	}
 
-	private getActions = (): ActionHandlerModel => {
+	private getActions = (): ActionHandler => {
 		const actionView = (id: number): void => this.viewAddress(id)
 		return { actionView: actionView.bind(this) }
 	}

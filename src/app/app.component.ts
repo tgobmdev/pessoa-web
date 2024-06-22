@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common'
 import { Component } from '@angular/core'
 import { RouterOutlet } from '@angular/router'
 import { MenuModule } from '@components/menu/menu.module'
-import { MenuItemModel } from '@components/menu/models/menu-item.model'
+import { MenuItem } from '@components/menu/models/menu-item.interface'
 import { NzIconModule } from 'ng-zorro-antd/icon'
 import { NzLayoutModule } from 'ng-zorro-antd/layout'
 
@@ -22,9 +22,9 @@ import { NzLayoutModule } from 'ng-zorro-antd/layout'
 export class AppComponent {
 	isCollapsed = false
 
-	menuItems: MenuItemModel[] = [
-		{ label: 'Persons', iconType: 'user', routerLink: 'person' },
-		{ label: 'Addresses', iconType: 'book', routerLink: 'address' },
+	menuItems: MenuItem[] = [
+		{ label: 'Persons', iconType: 'user', routerLink: 'persons' },
+		{ label: 'Addresses', iconType: 'book', routerLink: 'addresses' },
 	]
 
 	footerMessage = 'Ant Design ©2020 Implement By Angular'
