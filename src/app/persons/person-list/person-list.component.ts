@@ -1,27 +1,27 @@
-import { Component, OnInit } from '@angular/core'
-import { PartialColumnModel } from '@components/table/models/column.model'
+import { Component } from '@angular/core'
+import { PartialColumn } from '@components/table/models/column.interface'
 import { TableModule } from '@components/table/table.module'
-import { personTableColumnsConfig } from '@configs/table/person-table-columns.config'
-import { PersonResponse } from '@models/person.model'
+import { personColumns } from '@configs/table-columns/person-columns'
+import { PersonResponse } from '@models/person-response.interface'
 import { PersonService } from '@services/person.service'
 import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message'
 
 @Component({
-	selector: 'app-person',
+	selector: 'app-person-list',
 	standalone: true,
 	imports: [TableModule, NzMessageModule],
-	templateUrl: './person.component.html',
-	styleUrl: './person.component.css',
+	templateUrl: './person-list.component.html',
+	styleUrl: './person-list.component.css',
 })
-export class PersonComponent implements OnInit {
+export class PersonListComponent {
 	data: PersonResponse[] = []
-	columns: PartialColumnModel[]
+	columns: PartialColumn[]
 
 	constructor(
 		private readonly message: NzMessageService,
 		private readonly personService: PersonService
 	) {
-		this.columns = personTableColumnsConfig
+		this.columns = personColumns
 	}
 
 	ngOnInit(): void {

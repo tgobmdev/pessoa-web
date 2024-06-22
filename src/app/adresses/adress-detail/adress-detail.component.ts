@@ -1,23 +1,23 @@
-import { Component, OnInit } from '@angular/core'
+import { Component } from '@angular/core'
 import { FormGroup, ReactiveFormsModule } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router'
-import { PartialColumnModel } from '@components/table/models/column.model'
+import { PartialColumn } from '@components/table/models/column.interface'
 import { TableModule } from '@components/table/table.module'
-import { addressFormView } from '@configs/form/address-form.config'
-import { personTableColumnsConfig } from '@configs/table/person-table-columns.config'
-import { AddressPeopleResponse } from '@models/address-person.model'
-import { PersonResponse } from '@models/person.model'
-import { AddressService } from '@services/address.service'
-import { DynamicFormService } from '@services/dynamic-form.service'
 import { NzCollapseModule } from 'ng-zorro-antd/collapse'
 import { NzDividerModule } from 'ng-zorro-antd/divider'
 import { NzFormModule } from 'ng-zorro-antd/form'
 import { NzGridModule } from 'ng-zorro-antd/grid'
 import { NzInputModule } from 'ng-zorro-antd/input'
 import { NzMessageService } from 'ng-zorro-antd/message'
+import { addressForm } from 'src/app/core/configs/form/address-form'
+import { personColumns } from 'src/app/core/configs/table-columns/person-columns'
+import { AddressPeopleResponse } from 'src/app/core/models/address-people-response.interface'
+import { PersonResponse } from 'src/app/core/models/person-response.interface'
+import { AddressService } from 'src/app/core/services/address.service'
+import { DynamicFormService } from 'src/app/core/services/dynamic-form.service'
 
 @Component({
-	selector: 'app-address-view',
+	selector: 'app-adress-detail',
 	standalone: true,
 	imports: [
 		NzDividerModule,
@@ -28,15 +28,15 @@ import { NzMessageService } from 'ng-zorro-antd/message'
 		TableModule,
 		ReactiveFormsModule,
 	],
-	templateUrl: './address-view.component.html',
-	styleUrl: './address-view.component.css',
+	templateUrl: './adress-detail.component.html',
+	styleUrl: './adress-detail.component.css',
 })
-export class AddressViewComponent implements OnInit {
+export class AdressDetailComponent {
 	addressId!: number
 	addressForm: FormGroup
 
 	data: PersonResponse[] = []
-	columns: PartialColumnModel[]
+	columns: PartialColumn[]
 
 	constructor(
 		private readonly route: ActivatedRoute,
@@ -45,9 +45,9 @@ export class AddressViewComponent implements OnInit {
 		private readonly dynamicFormService: DynamicFormService
 	) {
 		this.getAddressId()
-		this.columns = personTableColumnsConfig
+		this.columns = personColumns
 		this.addressForm =
-			this.dynamicFormService.createFormGroupFromObject(addressFormView)
+			this.dynamicFormService.createFormGroupFromObject(addressForm)
 	}
 
 	ngOnInit(): void {

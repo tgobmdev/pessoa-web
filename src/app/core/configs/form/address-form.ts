@@ -1,6 +1,6 @@
-import { AddressModel } from '@models/address.model'
+import { Address } from '@models/address.interface'
 
-export const addressFormView: AddressModel = {
+export const addressForm: Address = {
 	id: 0,
 	street: '',
 	zipcode: '',

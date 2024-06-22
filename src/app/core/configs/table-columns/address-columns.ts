@@ -1,9 +1,7 @@
-import { ActionHandlerModel } from '@components/table/models/action-handler.model'
-import { PartialColumnModel } from '@components/table/models/column.model'
+import { ActionHandler } from '@components/table/models/action-handler.interface'
+import { PartialColumn } from '@components/table/models/column.interface'
 
-export const addressTableColumnsConfig = (
-	actions: ActionHandlerModel
-): PartialColumnModel[] => [
+export const addressColumns = (actions: ActionHandler): PartialColumn[] => [
 	{ header: 'ID', field: 'id' },
 	{ header: 'Street', field: 'street' },
 	{ header: 'ZipCode', field: 'zipcode' },

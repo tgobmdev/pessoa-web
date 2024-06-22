@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
-import { AddressPeopleResponse } from '@models/address-person.model'
-import { AddressResponse } from '@models/address.model'
+import { AddressPeopleResponse } from '@models/address-people-response.interface'
+import { AddressResponse } from '@models/address-response.interface'
 import { Observable } from 'rxjs'
 import { BaseHttpService } from './base-http.service'
 
