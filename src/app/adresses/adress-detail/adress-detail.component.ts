@@ -1,11 +1,15 @@
 import { Component } from '@angular/core'
-import { FormGroup, ReactiveFormsModule } from '@angular/forms'
+import {
+  FormGroup,
+  NonNullableFormBuilder,
+  ReactiveFormsModule,
+} from '@angular/forms'
 import { ActivatedRoute } from '@angular/router'
 import { PartialColumn, TableModule } from '@components/table'
 import { addressForm } from '@core/configs/form'
 import { personColumns } from '@core/configs/table-columns'
 import { AddressPeopleResponse, PersonResponse } from '@core/models'
-import { AddressService, DynamicFormService } from '@core/services'
+import { AddressService } from '@core/services'
 import { NzCollapseModule } from 'ng-zorro-antd/collapse'
 import { NzDividerModule } from 'ng-zorro-antd/divider'
 import { NzFormModule } from 'ng-zorro-antd/form'
@@ -39,15 +43,14 @@ export class AdressDetailComponent {
 		private readonly route: ActivatedRoute,
 		private readonly message: NzMessageService,
 		private readonly addressService: AddressService,
-		private readonly dynamicFormService: DynamicFormService
+		private readonly fb: NonNullableFormBuilder
 	) {
-		this.getAddressId()
 		this.columns = personColumns
-		this.addressForm =
-			this.dynamicFormService.createFormGroupFromObject(addressForm)
+		this.addressForm = this.fb.group(addressForm)
 	}
 
 	ngOnInit(): void {
+		this.getAddressId()
 		this.loadAddressDetails()
 		this.addressForm.disable()
 	}
@@ -55,16 +58,8 @@ export class AdressDetailComponent {
 	fetchAddressInfo = (addressId: number) => {
 		this.addressService.getAddressInfoWithPeople(addressId).subscribe({
 			next: (res: AddressPeopleResponse) => {
-				try {
-					this.dynamicFormService.updateFormGroupFromObject(
-						this.addressForm,
-						res.address
-					)
-					this.data = res.persons
-				} catch (err) {
-					const errorMessage = err instanceof Error ? err.message : String(err)
-					this.message.error(errorMessage)
-				}
+				this.addressForm.patchValue(res.address)
+				this.data = res.persons
 			},
 			error: (err) => {
 				this.message.error(err)
