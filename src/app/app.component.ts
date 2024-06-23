@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { Component } from '@angular/core'
 import { RouterOutlet } from '@angular/router'
-import { MenuModule } from '@components/menu/menu.module'
-import { MenuItem } from '@components/menu/models/menu-item.interface'
+import { MenuItem, MenuModule } from '@components/menu'
 import { NzIconModule } from 'ng-zorro-antd/icon'
 import { NzLayoutModule } from 'ng-zorro-antd/layout'
 

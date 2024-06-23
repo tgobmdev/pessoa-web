@@ -1,6 +1,5 @@
 import { Component } from '@angular/core'
-import { PartialColumn } from '@components/table/models/column.interface'
-import { TableModule } from '@components/table/table.module'
+import { PartialColumn, TableModule } from '@components/table'
 import { personColumns } from '@configs/table-columns/person-columns'
 import { PersonResponse } from '@models/person-response.interface'
 import { PersonService } from '@services/person.service'
