@@ -1,8 +1,8 @@
 import { Component } from '@angular/core'
 import {
-  FormGroup,
-  NonNullableFormBuilder,
-  ReactiveFormsModule,
+	FormGroup,
+	NonNullableFormBuilder,
+	ReactiveFormsModule,
 } from '@angular/forms'
 import { ActivatedRoute } from '@angular/router'
 import { PartialColumn, TableModule } from '@components/table'
