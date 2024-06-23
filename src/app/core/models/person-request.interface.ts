@@ -1,4 +1,4 @@
-import { Person } from './person.interface'
+import { Person } from "./person.interface";
 
 export interface PersonRequest extends Partial<Omit<Person, 'id'>> {
 	id?: number

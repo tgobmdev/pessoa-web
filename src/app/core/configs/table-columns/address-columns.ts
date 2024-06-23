@@ -1,5 +1,4 @@
-import { ActionHandler } from '@components/table/models/action-handler.interface'
-import { PartialColumn } from '@components/table/models/column.interface'
+import { ActionHandler, PartialColumn } from '@components/table'
 
 export const addressColumns = (actions: ActionHandler): PartialColumn[] => [
 	{ header: 'ID', field: 'id' },

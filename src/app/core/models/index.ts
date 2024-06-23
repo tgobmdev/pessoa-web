@@ -1,0 +1,7 @@
+export * from './address-people-response.interface'
+export * from './address-request.interface'
+export * from './address-response.interface'
+export * from './address.interface'
+export * from './person-request.interface'
+export * from './person-response.interface'
+export * from './person.interface'

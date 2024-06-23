@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core'
 import { FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms'
-import { DynamicFormValidator } from '@validators/dynamic-form.validator'
+import { DynamicFormValidator } from '@core/validators'
 
 @Injectable({
 	providedIn: 'root',

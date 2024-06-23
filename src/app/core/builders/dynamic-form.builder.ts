@@ -1,4 +1,4 @@
-import { DynamicFormValidator } from '@validators/dynamic-form.validator'
+import { DynamicFormValidator } from '@core/validators'
 
 export class DynamicFormValidatorBuilder {
 	private _referenceKeys: Set<string> = new Set<string>()
