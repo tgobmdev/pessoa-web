@@ -4,5 +4,5 @@ import { AdressListComponent } from './adress-list'
 
 export const ADRESSES_ROUTES: Routes = [
 	{ path: '', component: AdressListComponent },
-	{ path: ':slug', component: AdressDetailComponent },
+	{ path: ':id', component: AdressDetailComponent },
 ]

@@ -1,4 +1,4 @@
-import { Address } from '@models/address.interface'
+import { Address } from '@core/models'
 
 export const addressForm: Address = {
 	id: 0,

@@ -1,5 +1,5 @@
-import { DynamicFormValidatorBuilder } from "@core/builders"
-import { ErrorUtil, SetUtil } from "@core/utils"
+import { DynamicFormValidatorBuilder } from '@core/builders'
+import { ErrorUtil, SetUtil } from '@core/utils'
 
 export class DynamicFormValidator {
 	private _referenceKeys: Set<string>
