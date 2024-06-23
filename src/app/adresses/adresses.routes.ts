@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router'
-import { AdressDetailComponent } from './adress-detail/adress-detail.component'
-import { AdressListComponent } from './adress-list/adress-list.component'
+import { AdressDetailComponent } from './adress-detail'
+import { AdressListComponent } from './adress-list'
 
 export const ADRESSES_ROUTES: Routes = [
 	{ path: '', component: AdressListComponent },
-	{ path: ':slug', component: AdressDetailComponent },
+	{ path: ':id', component: AdressDetailComponent },
 ]

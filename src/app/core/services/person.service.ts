@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { PersonResponse } from '@models/person-response.interface'
+import { PersonResponse } from '@core/models'
 import { Observable } from 'rxjs'
 import { BaseHttpService } from './base-http.service'
 

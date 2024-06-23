@@ -1,4 +1,4 @@
-import { PartialColumn } from '@components/table/models/column.interface'
+import { PartialColumn } from '@components/table'
 
 export const personColumns: PartialColumn[] = [
 	{ header: 'ID', field: 'id' },

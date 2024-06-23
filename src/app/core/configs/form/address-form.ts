@@ -1,11 +1,11 @@
-import { Address } from '@models/address.interface'
+import { Validators } from '@angular/forms'
 
-export const addressForm: Address = {
-	id: 0,
-	street: '',
-	zipcode: '',
-	streetNumber: '',
-	city: '',
-	state: '',
-	stateShortname: '',
+export const addressForm = {
+	id: [null],
+	street: ['', Validators.required],
+	zipcode: ['', Validators.required],
+	streetNumber: ['', Validators.required],
+	city: ['', Validators.required],
+	state: ['', Validators.required],
+	stateShortname: ['', Validators.required],
 }

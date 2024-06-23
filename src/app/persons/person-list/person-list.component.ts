@@ -1,9 +1,8 @@
 import { Component } from '@angular/core'
-import { PartialColumn } from '@components/table/models/column.interface'
-import { TableModule } from '@components/table/table.module'
-import { personColumns } from '@configs/table-columns/person-columns'
-import { PersonResponse } from '@models/person-response.interface'
-import { PersonService } from '@services/person.service'
+import { PartialColumn, TableModule } from '@components/table'
+import { personColumns } from '@core/configs/table-columns/person-columns'
+import { PersonResponse } from '@core/models'
+import { PersonService } from '@core/services'
 import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message'
 
 @Component({

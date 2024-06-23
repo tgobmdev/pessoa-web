@@ -1,12 +1,10 @@
 import { Component } from '@angular/core'
 import { Router } from '@angular/router'
-import { ActionHandler } from '@components/table/models/action-handler.interface'
-import { PartialColumn } from '@components/table/models/column.interface'
-import { TableModule } from '@components/table/table.module'
+import { ActionHandler, PartialColumn, TableModule } from '@components/table'
+import { addressColumns } from '@core/configs/table-columns'
+import { AddressResponse } from '@core/models'
+import { AddressService } from '@core/services'
 import { NzMessageModule, NzMessageService } from 'ng-zorro-antd/message'
-import { addressColumns } from 'src/app/core/configs/table-columns/address-columns'
-import { AddressResponse } from 'src/app/core/models/address-response.interface'
-import { AddressService } from 'src/app/core/services/address.service'
 
 @Component({
 	selector: 'app-adress-list',
