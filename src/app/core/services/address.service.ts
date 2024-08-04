@@ -7,7 +7,7 @@ import { BaseHttpService } from './base-http.service'
 	providedIn: 'root',
 })
 export class AddressService extends BaseHttpService {
-	private endpoint = 'address'
+	private endpoint = 'addresses'
 
 	getAllAddresses = (): Observable<AddressResponse[]> => {
 		return this.get<AddressResponse[]>(this.endpoint)
